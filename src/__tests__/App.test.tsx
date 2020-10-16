@@ -7,8 +7,7 @@ import React from "react";
 
 describe("App", () => {
   test("renders App component", () => {
-    const app = App();
-    render(app);
+    render(<App />);
 
     screen.debug();
   });

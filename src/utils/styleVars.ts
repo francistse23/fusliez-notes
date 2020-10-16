@@ -1,4 +1,4 @@
-import { IStyleVars, IColorLibrary } from "./types";
+import { IColorLibrary, IStyleVars } from "./types";
 
 export const STYLE_VARS: IStyleVars = {
   fontFamily:
@@ -24,8 +24,8 @@ export const STYLE_VARS: IStyleVars = {
   crewmateColor: "#008dfc",
   crewmateColorAlt: "#30a4ff",
 
-  imposterColor: "#af1211",
-  imposterColorAlt: "#dd1716",
+  impostorColor: "#af1211",
+  impostorColorAlt: "#dd1716",
 
   neutralColor: "#8d86b7",
 };

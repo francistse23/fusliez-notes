@@ -14,7 +14,7 @@
     "@testing-library/jest-dom/extend-expect"
   ],
 
-  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|tsx|jsx|js)?$",
+  "testRegex": "(/__tests__/.*.(test|spec)).(ts|tsx|jsx|js)?$",
 
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node", "css"],
 

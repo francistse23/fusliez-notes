@@ -2,13 +2,13 @@ import Button from "components/common/Button";
 import { ITheme } from "utils/types";
 import React from "react";
 import WinsLossesButton from "./WinsLossesButton";
+import { useLocking } from "context/LockingContextProvider";
 import { useMobile } from "context/MobileContextProvider";
 import { usePlayers } from "context/PlayersContextProvider";
 import { useScores } from "context/ScoresContextProvider";
 import useStyles from "./ScoreControls.styles";
 import { useTheme } from "react-jss";
 import { useTranslation } from "react-i18next";
-import { useLocking } from "context/LockingContextProvider";
 
 export default function ScoreControls(): JSX.Element {
   const { t } = useTranslation();
@@ -64,8 +64,8 @@ export default function ScoreControls(): JSX.Element {
             setScore={(value: number) => setCrewmateWins(value)}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.imposterColor}
-            buttonBackgroundColorHover={theme.imposterColorHover}
+            buttonBackgroundColor={theme.impostorColor}
+            buttonBackgroundColorHover={theme.impostorColorHover}
             decrement={() =>
               setImpostorWins(impostorWins ? impostorWins - 1 : 0)
             }
@@ -88,8 +88,8 @@ export default function ScoreControls(): JSX.Element {
             setScore={(value: number) => setCrewmateLosses(value)}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.imposterColor}
-            buttonBackgroundColorHover={theme.imposterColorHover}
+            buttonBackgroundColor={theme.impostorColor}
+            buttonBackgroundColorHover={theme.impostorColorHover}
             decrement={() =>
               setImpostorLosses(impostorLosses ? impostorLosses - 1 : 0)
             }

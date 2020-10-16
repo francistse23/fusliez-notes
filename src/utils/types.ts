@@ -41,8 +41,8 @@ export interface IStyleVars {
   crewmateColor: string;
   crewmateColorAlt: string;
 
-  imposterColor: string;
-  imposterColorAlt: string;
+  impostorColor: string;
+  impostorColorAlt: string;
 
   neutralColor: string;
 }
@@ -70,8 +70,8 @@ export interface ITheme {
   crewmateColor: string;
   crewmateColorHover: string;
 
-  imposterColor: string;
-  imposterColorHover: string;
+  impostorColor: string;
+  impostorColorHover: string;
 
   borderColor: string;
 
