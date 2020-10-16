@@ -37,7 +37,7 @@ module.exports = {
       themes: path.resolve(__dirname, "src", "themes"),
       utils: path.resolve(__dirname, "src", "utils"),
     },
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
   },
 
   devtool: isProduction ? "none" : "eval-cheap-module-source-map",

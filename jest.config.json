@@ -1,0 +1,32 @@
+{
+  "roots": ["<rootDir>/src"],
+
+  "transform": {
+    "\\.(js|jsx)?$": "babel-jest",
+    "\\.(ts|tsx)?$": "ts-jest",
+    "\\.(css|styl|less|sass|scss)$": "<rootDir>/node_modules/jest-css-modules-transform"
+  },
+
+  "transformIgnorePatterns": ["node_modules/react-circular-prgoressbar"],
+
+  "setupFilesAfterEnv": [
+    "@testing-library/react/dont-cleanup-after-each",
+    "@testing-library/jest-dom/extend-expect"
+  ],
+
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|tsx|jsx|js)?$",
+
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node", "css"],
+
+  "moduleDirectories": ["<rootDir>/src", "node_modules"],
+
+  "moduleNameMapper": {
+    "^@root(.*)$": "<rootDir>/src$1",
+    "^@utils/(.*)$": "<rootDir>/src/utils/$1",
+    "^@context/(.*)$": "<rootDir>/src/context/$1",
+    "^@components/(.*)$": "<rootDir>/src/components/$1",
+    "^@assets/(.*)$": "<rootDir>/src/assets/$1"
+  },
+
+  "verbose": true
+}
