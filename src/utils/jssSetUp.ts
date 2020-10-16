@@ -117,6 +117,11 @@ export default function jssSetUp(theme: ITheme): SheetsRegistry {
         ".dragging": {
           cursor: "grabbing !important",
         },
+        text: {
+          "-webkit-user-select": "none",
+          "-ms-user-select": "none",
+          "user-select": "none",
+        },
       },
     })
     .attach();
