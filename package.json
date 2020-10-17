@@ -51,6 +51,8 @@
     "@testing-library/dom": "^7.26.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^3.4.2",
+    "@testing-library/user-event": "^12.1.8",
     "@types/classnames": "^2.2.10",
     "@types/dom-screen-wake-lock": "^1.0.0",
     "@types/jest": "^26.0.14",

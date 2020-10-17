@@ -1,31 +1,43 @@
 import "regenerator-runtime/runtime";
+import "@testing-library/jest-dom/extend-expect";
 
 import { render, screen } from "@testing-library/react";
 
+import { DEFAULT_THEME_DATA } from "utils/constants";
 import { ITheme } from "utils/types";
 import React from "react";
 import WinsLossesButton from "../components/ScoreControls/WinsLossesButton";
-import { useTheme } from "react-jss";
+import { renderHook } from "@testing-library/react-hooks";
 
-const theme = useTheme<ITheme>();
-
-const setup = () => {
-  const component = render(
-    <WinsLossesButton
-      buttonBackgroundColor={theme.impostorColor}
-      buttonBackgroundColorHover={theme.impostorColorHover}
-      decrement={() => setImpostorWins(impostorWins ? impostorWins - 1 : 0)}
-      increment={() => setImpostorWins(impostorWins + 1)}
-      score={impostorWins}
-      setScore={(value: number) => setImpostorWins(value)}
-    />
+function renderComponent({ role, score }: { role: string; score: number }) {
+  renderHook(() =>
+    role === "crewmate" ? (
+      <WinsLossesButton
+        buttonBackgroundColor={DEFAULT_THEME_DATA.crewmateColor}
+        buttonBackgroundColorHover={DEFAULT_THEME_DATA.crewmateColorHover}
+        decrement={() => (score > 0 ? score-- : 0)}
+        increment={() => score++}
+        score={score}
+        setScore={(value: number) => (score = value)}
+      />
+    ) : (
+      <WinsLossesButton
+        buttonBackgroundColor={DEFAULT_THEME_DATA.impostorColor}
+        buttonBackgroundColorHover={DEFAULT_THEME_DATA.impostorColorHover}
+        decrement={() => (score > 0 ? score-- : 0)}
+        increment={() => score++}
+        score={score}
+        setScore={(value: number) => (score = value)}
+      />
+    )
   );
-};
+}
 
 describe("Should render a set of buttons, which includes -, {score}, and +", () => {
-  test("renders App component", () => {
-    console.log(setup());
+  test("renders wins/losses button control for crewmate", () => {
+    console.log(renderComponent({ role: "crewmate", score: 2 }));
 
+    // assert initial state
     screen.debug();
   });
 });
