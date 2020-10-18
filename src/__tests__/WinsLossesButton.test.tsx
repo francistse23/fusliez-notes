@@ -4,7 +4,6 @@ import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 
 import { DEFAULT_THEME_DATA } from "utils/constants";
-import { ITheme } from "utils/types";
 import React from "react";
 import WinsLossesButton from "../components/ScoreControls/WinsLossesButton";
 import { renderHook } from "@testing-library/react-hooks";
@@ -35,7 +34,7 @@ function renderComponent({ role, score }: { role: string; score: number }) {
 
 describe("Should render a set of buttons, which includes -, {score}, and +", () => {
   test("renders wins/losses button control for crewmate", () => {
-    console.log(renderComponent({ role: "crewmate", score: 2 }));
+    renderComponent({ role: "crewmate", score: 2 });
 
     // assert initial state
     screen.debug();

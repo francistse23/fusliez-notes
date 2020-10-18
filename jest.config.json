@@ -25,7 +25,8 @@
     "^@utils/(.*)$": "<rootDir>/src/utils/$1",
     "^@context/(.*)$": "<rootDir>/src/context/$1",
     "^@components/(.*)$": "<rootDir>/src/components/$1",
-    "^@assets/(.*)$": "<rootDir>/src/assets/$1"
+    "^@assets/(.*)$": "<rootDir>/src/assets/$1",
+    "react-i18next": "<rootDir>/node_modules/react-i18next"
   },
 
   "verbose": true

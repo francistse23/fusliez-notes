@@ -23,6 +23,8 @@ export default function CircularProgressBarScores(
 ): JSX.Element {
   const { t, i18n } = useTranslation();
 
+  const textDirection = i18n.dir();
+
   const theme = useTheme<ITheme>();
   const classes = useStyles();
 
@@ -60,7 +62,7 @@ export default function CircularProgressBarScores(
               className={classes.CirclePercentage}
             >{`${crewmateRate}%`}</span>
             <span
-              style={{ direction: i18n.dir() }}
+              style={{ direction: textDirection }}
               className={classes.CircleScores}
             >{`${crewmateWins}${t("main.w")}-${crewmateLosses}${t(
               "main.l"
@@ -92,7 +94,7 @@ export default function CircularProgressBarScores(
               )}
             >{`${overallRate}%`}</span>
             <span
-              style={{ direction: i18n.dir() }}
+              style={{ direction: textDirection }}
               className={cx(classes.CircleScores, classes.CircleScoresPrimary)}
             >{`${overallWins}${t("main.w")}-${overallLosses}${t(
               "main.l"
@@ -121,7 +123,7 @@ export default function CircularProgressBarScores(
               className={classes.CirclePercentage}
             >{`${impostorRate}%`}</span>
             <span
-              style={{ direction: i18n.dir() }}
+              style={{ direction: textDirection }}
               className={classes.CircleScores}
             >{`${impostorWins}${t("main.w")}-${impostorLosses}${t(
               "main.l"
