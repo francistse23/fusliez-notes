@@ -9,7 +9,7 @@ import WinsLossesButton from "../components/ScoreControls/WinsLossesButton";
 import { renderHook } from "@testing-library/react-hooks";
 
 function renderComponent({ role, score }: { role: string; score: number }) {
-  renderHook(() =>
+  return renderHook(() =>
     role === "crewmate" ? (
       <WinsLossesButton
         buttonBackgroundColor={DEFAULT_THEME_DATA.crewmateColor}
@@ -37,6 +37,6 @@ describe("Should render a set of buttons, which includes -, {score}, and +", () 
     renderComponent({ role: "crewmate", score: 2 });
 
     // assert initial state
-    screen.debug();
+    // screen.debug();
   });
 });

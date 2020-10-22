@@ -51,64 +51,64 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
     { color: "black" },
   ];
 
+  const allPlayers = [
+    {
+      players: unknownPlayers,
+      modifier: (value: Array<IPlayer>) =>
+        dispatch(
+          setPlayersFromList({
+            listName: "unknownPlayers",
+            players: value,
+          })
+        ),
+    },
+    {
+      players: innocentPlayers,
+      modifier: (value: Array<IPlayer>) =>
+        dispatch(
+          setPlayersFromList({
+            listName: "innocentPlayers",
+            players: value,
+          })
+        ),
+    },
+    {
+      players: susPlayers,
+      modifier: (value: Array<IPlayer>) =>
+        dispatch(
+          setPlayersFromList({
+            listName: "susPlayers",
+            players: value,
+          })
+        ),
+    },
+    {
+      players: evilPlayers,
+      modifier: (value: Array<IPlayer>) =>
+        dispatch(
+          setPlayersFromList({
+            listName: "evilPlayers",
+            players: value,
+          })
+        ),
+    },
+    {
+      players: deadPlayers,
+      modifier: (value: Array<IPlayer>) =>
+        dispatch(
+          setPlayersFromList({
+            listName: "deadPlayers",
+            players: value,
+          })
+        ),
+    },
+  ];
+
   const swapPlayersColors = (
     currentPlayerColor: string,
     targetPlayerColor: string
   ) => {
     if (currentPlayerColor !== targetPlayerColor) {
-      const allPlayers = [
-        {
-          players: unknownPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "unknownPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: innocentPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "innocentPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: susPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "susPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: evilPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "evilPlayers",
-                players: value,
-              })
-            ),
-        },
-        {
-          players: deadPlayers,
-          modifier: (value: Array<IPlayer>) =>
-            dispatch(
-              setPlayersFromList({
-                listName: "deadPlayers",
-                players: value,
-              })
-            ),
-        },
-      ];
-
       let currentPlayerData: IPlayerData | null = null;
       let targetPlayerData: IPlayerData | null = null;
 
@@ -128,12 +128,12 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
             };
           }
 
-          if (currentPlayerData !== null && targetPlayerData !== null) break;
+          if (currentPlayerData && targetPlayerData) break;
         }
-        if (currentPlayerData !== null && targetPlayerData !== null) break;
+        if (currentPlayerData && targetPlayerData) break;
       }
 
-      if (currentPlayerData !== null && targetPlayerData !== null) {
+      if (currentPlayerData && targetPlayerData) {
         // the previous check will make sure both data are never null, we can use disable-line
 
         if (currentPlayerData.modifier === targetPlayerData.modifier) {

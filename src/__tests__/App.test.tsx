@@ -1,11 +1,10 @@
 import "regenerator-runtime/runtime";
 
-import { render, screen } from "@testing-library/react";
-
 import App from "../components/App";
 import { I18nextProvider } from "react-i18next";
 import React from "react";
 import i18n from "../i18n";
+import { render } from "@testing-library/react";
 
 describe("App", () => {
   test("renders App component", () => {
@@ -14,7 +13,5 @@ describe("App", () => {
         <App />
       </I18nextProvider>
     );
-
-    // screen.debug();
   });
 });

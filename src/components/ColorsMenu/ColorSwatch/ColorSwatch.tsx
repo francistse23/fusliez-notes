@@ -14,6 +14,7 @@ export default function ColorSwatch(props: IColorSwatchProps): JSX.Element {
   return (
     <div className={classes.ColorMenuCell}>
       <button
+        data-testid={`color-swatch-${targetColor}`}
         className={classes.ColorMenuSwatch}
         onClick={() => swapPlayersColors()}
         title={targetColor}
