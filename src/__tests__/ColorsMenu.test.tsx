@@ -1,17 +1,19 @@
 import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
-import PlayersListsSlice, {
-  setPlayersFromList,
-} from "../store/slices/PlayersListsSlice";
-import { render, screen } from "@testing-library/react";
-
 import ColorsMenu from "../components/ColorsMenu";
 import { Provider } from "react-redux";
 import React from "react";
-import { renderHook } from "@testing-library/react-hooks";
+import { render } from "@testing-library/react";
 import store from "store";
-import userEvent from "@testing-library/user-event";
+
+// import PlayersListsSlice, {
+//   setPlayersFromList,
+// } from "../store/slices/PlayersListsSlice";
+
+// import { renderHook } from "@testing-library/react-hooks";
+
+// import userEvent from "@testing-library/user-event";
 
 const component = render(
   <Provider store={store}>
@@ -24,10 +26,10 @@ const component = render(
 );
 
 describe("ColorsMenu component tests", () => {
-  test("renders ColorsMenu component", async () => {
+  test("should renderColorsMenu component", async () => {
     return component;
   });
-  test("renders all 12 color swatches", async () => {
+  test("should renderall 12 color swatches", async () => {
     component;
 
     const colorSwatchButtons = await component.findAllByTestId(/color-swatch/, {

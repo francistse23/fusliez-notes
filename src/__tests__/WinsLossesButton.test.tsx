@@ -33,7 +33,7 @@ function renderComponent({ role, score }: { role: string; score: number }) {
 }
 
 describe("Should render a set of buttons, which includes -, {score}, and +", () => {
-  test("renders wins/losses button control for crewmate", () => {
+  test("should renderwins/losses button control for crewmate", () => {
     renderComponent({ role: "crewmate", score: 2 });
 
     // assert initial state

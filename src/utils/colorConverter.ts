@@ -1,4 +1,4 @@
-import { STYLE_VARS, COLOR_LIBRARY } from "utils/styleVars";
+import { COLOR_LIBRARY, STYLE_VARS } from "utils/styleVars";
 
 export function getColorValue(color: string, shade: string): string {
   if (typeof COLOR_LIBRARY[color.toLowerCase()] != "undefined") {
@@ -16,11 +16,11 @@ export function hexToRGB(hex: string): string {
     g = 0,
     b = 0;
 
-  hex = hex.replace("#", "");
+  const h: string = hex.replace("#", "");
 
-  r = parseInt(hex.slice(0, 2), 16);
-  g = parseInt(hex.slice(2, 4), 16);
-  b = parseInt(hex.slice(4, 6), 16);
+  r = parseInt(h.slice(0, 2), 16);
+  g = parseInt(h.slice(2, 4), 16);
+  b = parseInt(h.slice(4, 6), 16);
 
   return `${r},${g},${b}`;
 }
