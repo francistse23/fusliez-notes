@@ -40,11 +40,19 @@ export default function ControlsContent(): JSX.Element {
       <hr className={classes.Divider} />
 
       <div className={classes.ControlsContentHeader}>
-        <Button onClick={() => setShowSettings(true)}>
+        <Button
+          data-testid="settings button"
+          onClick={() => setShowSettings(true)}
+        >
           {t("menu.settings")}
         </Button>
-        <Button onClick={() => setShowAbout(true)}>{t("menu.about")}</Button>
-        <Button onClick={() => setShowChangelog(true)}>
+        <Button data-testid="about button" onClick={() => setShowAbout(true)}>
+          {t("menu.about")}
+        </Button>
+        <Button
+          data-testid="changelog button"
+          onClick={() => setShowChangelog(true)}
+        >
           {t("menu.changelog")}
         </Button>
       </div>
