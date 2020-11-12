@@ -1,6 +1,8 @@
-import { DEFAULT_SETTINGS, NAMESPACE } from "utils/constants";
-import { ISettings, IUISliceState } from "utils/types";
+import { ISettings, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+import { DEFAULT_SETTINGS } from "constants/settings";
+import { NAMESPACE } from "constants/main";
 
 function getInitialSate(): ISettings {
   const localSettingsData: string | null = localStorage.getItem(
@@ -11,9 +13,9 @@ function getInitialSate(): ISettings {
     const settingsObject = JSON.parse(localSettingsData);
 
     return {
-      showNames: settingsObject.showNames || DEFAULT_SETTINGS.showNames,
+      showNames: settingsObject.showNames ?? DEFAULT_SETTINGS.showNames,
       isColorBlind:
-        settingsObject.isColorBlind || DEFAULT_SETTINGS.isColorBlind,
+        settingsObject.isColorBlind ?? DEFAULT_SETTINGS.isColorBlind,
     };
   }
 
@@ -58,10 +60,10 @@ export const {
   resetSettings,
 } = SettingsSlice.actions;
 
-export const getShowNames = (state: IUISliceState): boolean =>
+export const getShowNames = (state: IUIStoreState): boolean =>
   state.Settings.showNames;
 
-export const getIsColorBlind = (state: IUISliceState): boolean =>
+export const getIsColorBlind = (state: IUIStoreState): boolean =>
   state.Settings.isColorBlind;
 
 export default SettingsSlice;

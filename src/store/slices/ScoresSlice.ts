@@ -1,11 +1,33 @@
-import { IScores, IUISliceState } from "utils/types";
+import { IScores, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { DEFAULT_SCORES } from "utils/constants";
+import { DEFAULT_SCORES } from "constants/scores";
+import { NAMESPACE } from "constants/main";
+
+function getInitialState(): IScores {
+  const localScoresData: string | null = localStorage.getItem(
+    `${NAMESPACE}scores`
+  );
+
+  if (localScoresData) {
+    const scoresObject = JSON.parse(localScoresData);
+
+    return {
+      crewmateWins: scoresObject.crewmateWins || DEFAULT_SCORES.crewmateWins,
+      crewmateLosses:
+        scoresObject.crewmateLosses || DEFAULT_SCORES.crewmateLosses,
+      impostorWins: scoresObject.impostorWins || DEFAULT_SCORES.impostorWins,
+      impostorLosses:
+        scoresObject.impostorLosses || DEFAULT_SCORES.impostorLosses,
+    };
+  }
+
+  return DEFAULT_SCORES;
+}
 
 const ScoresSlice = createSlice({
   name: "Scores",
-  initialState: DEFAULT_SCORES,
+  initialState: getInitialState(),
   reducers: {
     setCrewmateWins: (state: IScores, action: PayloadAction<number>) => ({
       ...state,
@@ -86,16 +108,16 @@ export const {
   resetScores,
 } = ScoresSlice.actions;
 
-export const getCrewmateWins = (state: IUISliceState): number =>
+export const getCrewmateWins = (state: IUIStoreState): number =>
   state.Scores.crewmateWins;
 
-export const getCrewmateLosses = (state: IUISliceState): number =>
+export const getCrewmateLosses = (state: IUIStoreState): number =>
   state.Scores.crewmateLosses;
 
-export const getImpostorWins = (state: IUISliceState): number =>
+export const getImpostorWins = (state: IUIStoreState): number =>
   state.Scores.impostorWins;
 
-export const getImpostorLosses = (state: IUISliceState): number =>
+export const getImpostorLosses = (state: IUIStoreState): number =>
   state.Scores.impostorLosses;
 
 export default ScoresSlice;

@@ -2,6 +2,27 @@ import { ITheme } from "utils/types";
 import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
+  "@global": {
+    image: {
+      pointerEvents: "none",
+    },
+    text: {
+      fontFamily:
+        "Impact, Haettenschweiler, Franklin Gothic Bold, Charcoal, Helvetica Inserat, Bitstream Vera Sans Bold, Arial Black, sans serif",
+      fontSize: "1.75rem",
+      fill: "#ffffff",
+      strokeWidth: "1px",
+      stroke: "#000000",
+      pointerEvents: "none",
+    },
+    ".MapDescriptions": {
+      "&>text": {
+        fontFamily: theme.fontFamily,
+        fontSize: "1.25rem",
+        strokeWidth: 0,
+      },
+    },
+  },
   MapsPanel: {
     flex: 1,
     justifyContent: "center",
@@ -23,6 +44,7 @@ export default createUseStyles((theme: ITheme) => ({
   MapsToggle: (props) => ({
     display: props.isMobile ? "flex" : "inline-flex",
     width: props.isMobile ? "100%" : "auto",
+    margin: "0 0.25rem",
   }),
   MapsToggleButton: {
     flex: "1 1 auto",
@@ -68,4 +90,9 @@ export default createUseStyles((theme: ITheme) => ({
       cursor: "grab",
     },
   }),
+  MapsButtonsContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+    flex: "1 0 auto",
+  },
 }));

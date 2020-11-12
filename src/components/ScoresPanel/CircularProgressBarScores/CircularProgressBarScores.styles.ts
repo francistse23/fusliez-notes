@@ -20,10 +20,10 @@ export default createUseStyles((theme: ITheme) => ({
     fontSize: "1.25rem",
   },
   ProgressBarTitleImpostor: {
-    color: lightenDarkenColor(theme.impostorColor, 80),
+    color: lightenDarkenColor(theme.imposterColorPrimary, 80),
   },
   ProgressBarTitleCrewmate: {
-    color: lightenDarkenColor(theme.crewmateColor, 30),
+    color: lightenDarkenColor(theme.crewmateColorPrimary, 30),
   },
   CirclePrimary: {
     width: "6rem",

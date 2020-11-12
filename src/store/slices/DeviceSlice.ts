@@ -1,7 +1,7 @@
-import { IDevice, IUISliceState } from "utils/types";
+import { IDevice, IUIStoreState } from "utils/types";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { BREAKPOINT } from "utils/constants";
+import { BREAKPOINT } from "constants/main";
 
 const DeviceSlice = createSlice({
   name: "Device",
@@ -35,11 +35,11 @@ const DeviceSlice = createSlice({
 
 export const { setIsMobile, setOrientation, resetDevice } = DeviceSlice.actions;
 
-export const getIsMobile = (state: IUISliceState): boolean =>
+export const getIsMobile = (state: IUIStoreState): boolean =>
   state.Device.isMobile;
 
 export const getOrientation = (
-  state: IUISliceState
+  state: IUIStoreState
 ): "portrait" | "landscape" => state.Device.orientation;
 
 export default DeviceSlice;

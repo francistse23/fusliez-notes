@@ -1,21 +1,21 @@
+import { IPlayer, IPlayersSection } from "utils/types";
 import { getIsColorBlind, getShowNames } from "store/slices/SettingsSlice";
 import { getIsMobile, getOrientation } from "store/slices/DeviceSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import ColorsMenu from "components/ColorsMenu";
-import { IPlayer } from "utils/types";
 import React from "react";
 import cx from "classnames";
+import { getPlayerEditLock } from "store/slices/PlayerEditLockSlice";
+import { setPlayersFromSection } from "store/slices/PlayersSectionsSlice";
 import usePlayerStyles from "./Player.styles";
-import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 export interface IPlayerProps {
   color: string;
   playerName: string;
-  list: Array<IPlayer>;
-  setList: (value: IPlayer[]) => void;
+  section: IPlayersSection;
   index: number;
-  isReadOnly: boolean;
 }
 
 export default function Player(props: IPlayerProps): JSX.Element {
@@ -25,8 +25,11 @@ export default function Player(props: IPlayerProps): JSX.Element {
   const orientation = useSelector(getOrientation);
   const showNames = useSelector(getShowNames);
   const isColorBlind = useSelector(getIsColorBlind);
+  const isLocked = useSelector(getPlayerEditLock);
 
   const [isMenuShowing, setIsMenuShowing] = React.useState(false);
+
+  const dispatch = useDispatch();
 
   const htmlElRef = React.useRef(null);
 
@@ -38,15 +41,24 @@ export default function Player(props: IPlayerProps): JSX.Element {
     ...props,
   });
 
-  const { color, playerName, list, setList, index, isReadOnly } = props;
+  const { color, playerName, section, index } = props;
 
   const handleChange = (
     player: number,
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const players: Array<IPlayer> = list.map((value) => ({ ...value }));
+    const players: Array<IPlayer> = section.players.map((value) => ({
+      ...value,
+    }));
+
     players[player].playerName = event.currentTarget.value;
-    setList(players);
+
+    dispatch(
+      setPlayersFromSection({
+        sectionId: section.id as number,
+        players: players,
+      })
+    );
   };
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -66,7 +78,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
   return (
     <div className={classes.Player} id={color} title={color}>
       <div className={`${classes.PlayerTile} player-handle`}>
-        {isMenuShowing && !isMobile && !isReadOnly && (
+        {isMenuShowing && !isMobile && !isLocked && (
           <ColorsMenu
             isMenuShowing={isMenuShowing}
             setIsMenuShowing={setIsMenuShowing}
@@ -76,7 +88,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
         <div
           className={cx(classes.PlayerIcon, "player-handle")}
           onClick={() => {
-            if (isReadOnly) {
+            if (isLocked) {
               return;
             }
 
@@ -85,12 +97,12 @@ export default function Player(props: IPlayerProps): JSX.Element {
             }
           }}
           style={{
-            backgroundImage: `url(assets/images/player-icons/${color}.png)`,
+            backgroundImage: `url(assets/images/playerIcons/${color}.png)`,
           }}
         ></div>
         {showNames && (
           <div className={classes.PlayerName}>
-            {!isReadOnly && (
+            {!isLocked && (
               <input
                 type="text"
                 placeholder={t(`main.${color}`)}
@@ -103,7 +115,7 @@ export default function Player(props: IPlayerProps): JSX.Element {
                 ref={htmlElRef}
               />
             )}
-            {isReadOnly && (
+            {isLocked && (
               <>{playerName !== "" ? playerName : t(`main.${color}`)}</>
             )}
           </div>

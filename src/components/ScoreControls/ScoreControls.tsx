@@ -18,9 +18,9 @@ import {
   setImpostorWins,
 } from "store/slices/ScoresSlice";
 import {
-  resetPlayersLists,
-  resetPlayersListsPositions,
-} from "store/slices/PlayersListsSlice";
+  resetPlayersSections,
+  resetPlayersSectionsPositions,
+} from "store/slices/PlayersSectionsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Button from "components/common/Button";
@@ -52,7 +52,7 @@ export default function ScoreControls(): JSX.Element {
   const resetAll = () => {
     dispatch(resetScores());
 
-    dispatch(resetPlayersLists());
+    dispatch(resetPlayersSections());
 
     dispatch(resetLock());
   };
@@ -73,16 +73,16 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsHeader}>{t("controls.wins")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.crewmateColor}
-            buttonBackgroundColorHover={theme.crewmateColorHover}
+            buttonBackgroundColor={theme.crewmateColorPrimary}
+            buttonBackgroundColorHover={theme.crewmateColorSecondary}
             decrement={() => dispatch(decrementCrewmateWins())}
             increment={() => dispatch(incrementCrewmateWins())}
             score={crewmateWins}
             setScore={(value: number) => dispatch(setCrewmateWins(value))}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.impostorColor}
-            buttonBackgroundColorHover={theme.impostorColorHover}
+            buttonBackgroundColor={theme.imposterColorPrimary}
+            buttonBackgroundColorHover={theme.imposterColorSecondary}
             decrement={() => dispatch(decrementImpostorWins())}
             increment={() => dispatch(incrementImpostorWins())}
             score={impostorWins}
@@ -93,16 +93,16 @@ export default function ScoreControls(): JSX.Element {
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsHeader}>{t("controls.losses")}</h4>
           <WinsLossesButton
-            buttonBackgroundColor={theme.crewmateColor}
-            buttonBackgroundColorHover={theme.crewmateColorHover}
+            buttonBackgroundColor={theme.crewmateColorPrimary}
+            buttonBackgroundColorHover={theme.crewmateColorSecondary}
             decrement={() => dispatch(decrementCrewmateLosses())}
             increment={() => dispatch(incrementCrewmateLosses())}
             score={crewmateLosses}
             setScore={(value: number) => dispatch(setCrewmateLosses(value))}
           />
           <WinsLossesButton
-            buttonBackgroundColor={theme.impostorColor}
-            buttonBackgroundColorHover={theme.impostorColorHover}
+            buttonBackgroundColor={theme.imposterColorPrimary}
+            buttonBackgroundColorHover={theme.imposterColorSecondary}
             decrement={() => dispatch(decrementImpostorLosses())}
             increment={() => dispatch(incrementImpostorLosses())}
             score={impostorLosses}
@@ -120,9 +120,9 @@ export default function ScoreControls(): JSX.Element {
         {!isMobile && (
           <Button
             className={classes.ScoreOptionButton}
-            onClick={() => dispatch(resetPlayersListsPositions())}
+            onClick={() => dispatch(resetPlayersSectionsPositions())}
           >
-            {t("controls.resetRound")}
+            {t("controls.resetPositions")}
           </Button>
         )}
         {!isMobile && (
