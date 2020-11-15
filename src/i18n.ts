@@ -21,7 +21,7 @@ i18n
     },
 
     react: {
-      useSuspense: false,
+      useSuspense: (global as any).__DEV__ ? false : true,
     },
   });
 
