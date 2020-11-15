@@ -37,7 +37,11 @@ export default function ControlsContent(): JSX.Element {
   }, []);
 
   return (
-    <div id="controls" className={classes.ControlsContent}>
+    <div
+      data-testid="controls"
+      id="controls"
+      className={classes.ControlsContent}
+    >
       <ScoreControls />
 
       <hr className={classes.Divider} />

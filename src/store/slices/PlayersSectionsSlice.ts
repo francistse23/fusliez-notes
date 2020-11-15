@@ -9,7 +9,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { NAMESPACE } from "constants/main";
 
-function getInitialState(): IPlayersSectionsSlice {
+export function getInitialState(): IPlayersSectionsSlice {
   const localPlayersSectionsData: string | null = localStorage.getItem(
     `${NAMESPACE}sections`
   );

@@ -13,17 +13,21 @@ export function getColorValue(color: string, shade: string): string {
 }
 
 export function hexToRGB(hex: string): string {
-  let r = 0,
-    g = 0,
-    b = 0;
+  if (hex) {
+    let r = 0,
+      g = 0,
+      b = 0;
 
-  const h: string = hex.replace("#", "");
+    const h: string = hex.replace("#", "");
 
-  r = parseInt(h.slice(0, 2), 16);
-  g = parseInt(h.slice(2, 4), 16);
-  b = parseInt(h.slice(4, 6), 16);
+    r = parseInt(h.slice(0, 2), 16);
+    g = parseInt(h.slice(2, 4), 16);
+    b = parseInt(h.slice(4, 6), 16);
 
-  return `${r},${g},${b}`;
+    return `${r},${g},${b}`;
+  }
+
+  return "";
 }
 
 //function to decide whether to use light or dark text color

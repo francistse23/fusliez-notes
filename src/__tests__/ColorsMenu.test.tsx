@@ -1,38 +1,36 @@
 import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
+import { render, screen } from "@testing-library/react";
+
 import ColorsMenu from "../components/ColorsMenu";
 import { Provider } from "react-redux";
 import React from "react";
-import { render } from "@testing-library/react";
+import configureStore from "redux-mock-store";
 import store from "store";
 
-// import PlayersListsSlice, {
-//   setPlayersFromList,
-// } from "../store/slices/PlayersListsSlice";
-
-// import { renderHook } from "@testing-library/react-hooks";
-
-// import userEvent from "@testing-library/user-event";
-
-const component = render(
-  <Provider store={store}>
-    <ColorsMenu
-      isMenuShowing={true}
-      setIsMenuShowing={() => null}
-      currentColor="red"
-    />
-  </Provider>
-);
-
 describe("ColorsMenu component tests", () => {
-  test("should renderColorsMenu component", async () => {
-    return component;
-  });
-  test("should renderall 12 color swatches", async () => {
-    component;
+  beforeEach(() => {
+    const mockStore = configureStore();
 
-    const colorSwatchButtons = await component.findAllByTestId(/color-swatch/, {
+    render(
+      <Provider store={mockStore(store.getState())}>
+        <ColorsMenu
+          isMenuShowing={true}
+          setIsMenuShowing={() => null}
+          currentColor="red"
+        />
+      </Provider>
+    );
+  });
+
+  test("should render ColorsMenu component", async () => {
+    const component = await screen.getByTestId("colors-menu");
+    expect(component).toBeInTheDocument();
+  });
+
+  test("should render all 12 color swatches", async () => {
+    const colorSwatchButtons = await screen.findAllByTestId(/color-swatch/, {
       exact: false,
     });
 

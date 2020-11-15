@@ -19,6 +19,10 @@ i18n
     backend: {
       loadPath: "./assets/locales/{{lng}}/{{ns}}.json",
     },
+
+    react: {
+      useSuspense: false,
+    },
   });
 
 export default i18n;

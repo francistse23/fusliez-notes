@@ -9,10 +9,7 @@
 
   "transformIgnorePatterns": ["node_modules/react-circular-prgoressbar"],
 
-  "setupFilesAfterEnv": [
-    "@testing-library/react/dont-cleanup-after-each",
-    "@testing-library/jest-dom/extend-expect"
-  ],
+  "setupFilesAfterEnv": ["@testing-library/jest-dom/extend-expect"],
 
   "testRegex": "(/__tests__/.*.(test|spec)).(ts|tsx|jsx|js)?$",
 

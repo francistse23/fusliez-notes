@@ -164,6 +164,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
       className={`${classes.ColorMenu} ${
         isMenuShowing ? "" : classes.isHidden
       }`}
+      data-testid="colors-menu"
     >
       {colors.map(({ color }) => (
         <ColorSwatch
