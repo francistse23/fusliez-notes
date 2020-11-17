@@ -81,7 +81,7 @@ export default function SettingsPanel(): JSX.Element {
   ];
 
   return (
-    <div className={classes.SettingsPanel}>
+    <div data-testid="settings panel" className={classes.SettingsPanel}>
       {isMobile && (
         <h2 className={classes.SettingsPanelTitle}>{t("settings.title")}</h2>
       )}

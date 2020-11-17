@@ -68,11 +68,20 @@ export default function ControlsContent(): JSX.Element {
         </Button>
       </div>
 
-      <Settings show={showSettings} onClose={() => setShowSettings(false)} />
+      {showSettings && (
+        <Settings show={showSettings} onClose={() => setShowSettings(false)} />
+      )}
 
-      <Changelog show={showChangelog} onClose={() => setShowChangelog(false)} />
+      {showChangelog && (
+        <Changelog
+          show={showChangelog}
+          onClose={() => setShowChangelog(false)}
+        />
+      )}
 
-      <About show={showAbout} onClose={() => setShowAbout(false)} />
+      {showAbout && (
+        <About show={showAbout} onClose={() => setShowAbout(false)} />
+      )}
     </div>
   );
 }

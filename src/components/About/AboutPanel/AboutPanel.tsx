@@ -25,7 +25,7 @@ export default function AboutPanel(): JSX.Element {
   ];
 
   return (
-    <div className={classes.AboutPanel}>
+    <div data-testid="about panel" className={classes.AboutPanel}>
       {isMobile && (
         <h2 className={classes.AboutPanelHeader}>{t("menu.about")}</h2>
       )}
