@@ -3,11 +3,13 @@ import "@testing-library/jest-dom/extend-expect";
 
 import { render, screen } from "@testing-library/react";
 
-import ColorsMenu from "../components/ColorsMenu";
+import ColorsMenu from "components/ColorsMenu";
 import { Provider } from "react-redux";
 import React from "react";
 import configureStore from "redux-mock-store";
 import store from "store";
+
+// import { swapPlayersColors } from "components/ColorsMenu/ColorsMenu";
 
 describe("ColorsMenu component tests", () => {
   beforeEach(() => {
@@ -36,4 +38,6 @@ describe("ColorsMenu component tests", () => {
 
     expect(colorSwatchButtons).toHaveLength(12);
   });
+
+  // test("should not swap color if the current and target colors are the same", () => {});
 });

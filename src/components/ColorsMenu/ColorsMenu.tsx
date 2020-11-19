@@ -1,10 +1,11 @@
-import { Dispatch, useDispatch, useSelector } from "react-redux";
 import {
   getPlayersSections,
   setPlayersSections,
 } from "store/slices/PlayersSectionsSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import ColorSwatch from "./ColorSwatch";
+import { Dispatch } from "redux";
 import { IPlayersSection } from "utils/types";
 import React from "react";
 import useStyles from "./ColorsMenu.styles";
@@ -19,7 +20,7 @@ export const swapPlayersColors = (
   currentPlayerColor: string,
   targetPlayerColor: string,
   playersSections: Array<IPlayersSection>,
-  dispatch: Dispatch<(state: boolean) => void>
+  dispatch: Dispatch = useDispatch()
 ): void => {
   if (currentPlayerColor !== targetPlayerColor) {
     const currentPlayerData = {
@@ -126,7 +127,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
   const playersSections = useSelector(getPlayersSections);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const colors = [
     { color: "brown" },
@@ -172,7 +173,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
           targetColor={color}
           key={color}
           swapPlayersColors={() => {
-            swapPlayersColors(currentColor, color, playersSections, dispatch);
+            swapPlayersColors(currentColor, color, playersSections);
             setIsMenuShowing(false);
           }}
         />
