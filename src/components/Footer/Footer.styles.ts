@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 
 export default createUseStyles((theme: ITheme) => ({
   Footer: {
-    backgroundColor: theme.backgroundColor,
+    backgroundColor: theme.backgroundColorPrimary,
     padding: "0.5rem",
   },
 }));
