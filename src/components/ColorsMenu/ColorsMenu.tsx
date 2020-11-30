@@ -19,9 +19,8 @@ export interface IColorsMenuProps {
 export const swapPlayersColors = (
   currentPlayerColor: string,
   targetPlayerColor: string,
-  playersSections: Array<IPlayersSection>,
-  dispatch: Dispatch = useDispatch()
-): void => {
+  playersSections: Array<IPlayersSection>
+): Array<IPlayersSection> | undefined => {
   if (currentPlayerColor !== targetPlayerColor) {
     const currentPlayerData = {
       index: -1,
@@ -112,9 +111,9 @@ export const swapPlayersColors = (
 
         return player;
       });
-    }
 
-    dispatch(setPlayersSections(newPlayersSections));
+      return newPlayersSections;
+    }
   }
 };
 
@@ -127,7 +126,7 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
 
   const playersSections = useSelector(getPlayersSections);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const colors = [
     { color: "brown" },
@@ -173,7 +172,8 @@ export default function ColorsMenu(props: IColorsMenuProps): JSX.Element {
           targetColor={color}
           key={color}
           swapPlayersColors={() => {
-            swapPlayersColors(currentColor, color, playersSections);
+            const res = swapPlayersColors(currentColor, color, playersSections);
+            if (res) dispatch(setPlayersSections(res));
             setIsMenuShowing(false);
           }}
         />

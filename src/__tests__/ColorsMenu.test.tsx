@@ -1,7 +1,7 @@
 import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import ColorsMenu from "components/ColorsMenu";
 import { Provider } from "react-redux";
@@ -12,11 +12,14 @@ import store from "store";
 // import { swapPlayersColors } from "components/ColorsMenu/ColorsMenu";
 
 describe("ColorsMenu component tests", () => {
+  let testStore: typeof store;
+
   beforeEach(() => {
     const mockStore = configureStore();
+    testStore = mockStore(store.getState());
 
     render(
-      <Provider store={mockStore(store.getState())}>
+      <Provider store={testStore}>
         <ColorsMenu
           isMenuShowing={true}
           setIsMenuShowing={() => null}
@@ -39,5 +42,15 @@ describe("ColorsMenu component tests", () => {
     expect(colorSwatchButtons).toHaveLength(12);
   });
 
-  // test("should not swap color if the current and target colors are the same", () => {});
+  test("should not swap color if the current and target colors are the same", async () => {
+    const tempStore = testStore.getState().PlayersSections.sections;
+
+    const redColorSwatch = await screen.getByTestId("color-swatch-red");
+
+    fireEvent.click(redColorSwatch);
+
+    expect(testStore.getState().PlayersSections.sections).toStrictEqual(
+      tempStore
+    );
+  });
 });
