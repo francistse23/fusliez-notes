@@ -5,7 +5,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import ColorSwatch from "./ColorSwatch";
-import { Dispatch } from "redux";
 import { IPlayersSection } from "utils/types";
 import React from "react";
 import useStyles from "./ColorsMenu.styles";
