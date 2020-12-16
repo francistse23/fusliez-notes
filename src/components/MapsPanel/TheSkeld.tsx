@@ -7,7 +7,7 @@ export default function TheSkeld(
   const { t } = useTranslation();
 
   return (
-    <svg viewBox="0 0 1366 768" {...props}>
+    <svg data-testid="the-skeld-map" viewBox="0 0 1366 768" {...props}>
       <title>{"TheSkeld"}</title>
       <image href="assets/images/TheSkeld.png" />
       <g className="MapDescriptions">

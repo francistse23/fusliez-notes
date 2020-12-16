@@ -7,7 +7,7 @@ export default function MiraHq(
   const { t } = useTranslation();
 
   return (
-    <svg viewBox="0 0 1366 768" {...props}>
+    <svg data-testid="mira-hq-map" viewBox="0 0 1366 768" {...props}>
       <title>{"MiraHq"}</title>
       <image href="assets/images/Mirahq.jpg" />
       <text y={155} x={812.5}>

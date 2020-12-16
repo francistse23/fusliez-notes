@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
 import { JssProvider, ThemeProvider } from "react-jss";
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 
 import ControlsContent from "../components/ControlsContent";
 import { DEFAULT_THEME_DATA } from "constants/theme";

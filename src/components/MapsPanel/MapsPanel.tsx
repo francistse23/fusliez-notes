@@ -43,11 +43,12 @@ export default function MapsPanel(): JSX.Element {
   }
 
   return (
-    <div id="maps" className={classes.MapsPanel}>
+    <div id="maps" data-testid="maps-panel" className={classes.MapsPanel}>
       <div className={classes.MapsHeader}>
         {!isMobile && <h2 className={classes.MapsTitle}>{t("maps.title")}</h2>}
         <div className={classes.MapsToggle}>
           <Button
+            data-testid="the-skeld-button"
             className={classes.MapsToggleButton}
             pressed={map === "TheSkeld"}
             onClick={() => dispatch(setCurrentMap("TheSkeld"))}
@@ -55,6 +56,7 @@ export default function MapsPanel(): JSX.Element {
             The Skeld
           </Button>
           <Button
+            data-testid="mira-hq-button"
             className={classes.MapsToggleButton}
             pressed={map === "MiraHq"}
             onClick={() => dispatch(setCurrentMap("MiraHq"))}
@@ -62,6 +64,7 @@ export default function MapsPanel(): JSX.Element {
             Mira HQ
           </Button>
           <Button
+            data-testid="polus-button"
             className={classes.MapsToggleButton}
             pressed={map === "Polus"}
             onClick={() => dispatch(setCurrentMap("Polus"))}
