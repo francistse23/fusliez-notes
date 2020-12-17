@@ -128,7 +128,7 @@ export default function MobileLayout(): JSX.Element {
   }, []);
 
   return (
-    <div className={classes.MobileLayout}>
+    <div className={classes.MobileLayout} data-testid="mobile-content">
       <div className={classes.MobileContent}>
         <SlideDrawer
           isDrawerOpen={isDrawerOpen}

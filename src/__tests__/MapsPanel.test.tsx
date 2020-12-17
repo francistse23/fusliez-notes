@@ -2,7 +2,7 @@ import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
 import { JssProvider, ThemeProvider } from "react-jss";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import { DEFAULT_THEME_DATA } from "constants/theme";
 import { I18nextProvider } from "react-i18next";

@@ -109,6 +109,7 @@ export default function Content(): JSX.Element {
             .
           </p>
           <Button
+            data-testid="understand-button"
             onClick={() => {
               setShowDisclaimer("Understood");
 

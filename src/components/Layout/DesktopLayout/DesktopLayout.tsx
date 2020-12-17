@@ -10,7 +10,7 @@ export default function DesktopContent(): JSX.Element {
 
   return (
     <React.Fragment>
-      <main className={classes.DesktopContent}>
+      <main className={classes.DesktopContent} data-testid="desktop-content">
         <MainContent />
 
         <div className={classes.DesktopDivider} />

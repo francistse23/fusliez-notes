@@ -5,7 +5,7 @@ import React from "react";
 import registerFaIcons from "../utils/registerFaIcons";
 import { render } from "@testing-library/react";
 
-describe("App", () => {
+describe("Footer component tests", () => {
   test("renders Footer component", () => {
     registerFaIcons();
     render(<Footer />);
