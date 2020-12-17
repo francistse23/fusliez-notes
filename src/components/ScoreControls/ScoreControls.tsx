@@ -58,7 +58,7 @@ export default function ScoreControls(): JSX.Element {
   };
 
   return (
-    <div className={classes.ScoreControls}>
+    <div className={classes.ScoreControls} data-testid="score-controls">
       <div className={classes.ScoreButtonsLayout}>
         <div className={classes.ScoreButtonsColumn}>
           <h4 className={classes.ScoreButtonsLabel}>&nbsp;</h4>

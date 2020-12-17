@@ -1,9 +1,8 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import React from "react";
 import useStyles from "./Navbar.styles";
+import { useTranslation } from "react-i18next";
 
 export interface INavbar {
   activeView: string;
@@ -57,6 +56,7 @@ export default function Navbar(props: INavbar): JSX.Element {
         className={`${classes.NavbarItem} ${
           name === activeView && classes.isActive
         }`}
+        data-testid={`mobile-navbar-${name}-button`}
         onClick={() =>
           name === t("menu.menu")
             ? setIsDrawerOpen(true)

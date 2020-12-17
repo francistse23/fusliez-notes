@@ -68,6 +68,7 @@
     "@types/react-redux": "^7.1.11",
     "@types/redux": "^3.6.0",
     "@types/sortablejs": "^1.10.6",
+    "@types/testing-library__react-hooks": "^3.4.1",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
     "babel-core": "^6.26.3",

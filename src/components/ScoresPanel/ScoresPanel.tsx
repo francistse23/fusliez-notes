@@ -37,7 +37,7 @@ export default function ScoresPanels(): JSX.Element {
   const impostorRate = getRate(impostorWinsNumber, impostorGames);
 
   return (
-    <div className={classes.ScoresPanel}>
+    <div className={classes.ScoresPanel} data-testid="scores-panel">
       <CircularProgressBarScores
         {...{
           overallRate,

@@ -52,16 +52,16 @@ export default function ControlsContent(): JSX.Element {
 
       <div className={classes.ControlsContentHeader}>
         <Button
-          data-testid="settings button"
+          data-testid="settings-button"
           onClick={() => setShowSettings(true)}
         >
           {t("menu.settings")}
         </Button>
-        <Button data-testid="about button" onClick={() => setShowAbout(true)}>
+        <Button data-testid="about-button" onClick={() => setShowAbout(true)}>
           {t("menu.about")}
         </Button>
         <Button
-          data-testid="changelog button"
+          data-testid="changelog-button"
           onClick={() => setShowChangelog(true)}
         >
           {t("menu.changelog")}

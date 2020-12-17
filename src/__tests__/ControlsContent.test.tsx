@@ -39,12 +39,12 @@ describe("ControlsContent component tests", () => {
   });
 
   test('should render button for "Settings"', async () => {
-    const element = await waitFor(() => screen.getByTestId("settings button"));
+    const element = await waitFor(() => screen.getByTestId("settings-button"));
     expect(element).toBeInTheDocument();
   });
 
   test("should open Settings modal when button is clicked", async () => {
-    const button = await waitFor(() => screen.getByTestId("settings button"));
+    const button = await waitFor(() => screen.getByTestId("settings-button"));
 
     expect(button).toBeInTheDocument();
 
@@ -57,25 +57,25 @@ describe("ControlsContent component tests", () => {
   });
 
   test("should open About modal when button is clicked", async () => {
-    const button = await waitFor(() => screen.getByTestId("about button"));
+    const button = await waitFor(() => screen.getByTestId("about-button"));
 
     expect(button).toBeInTheDocument();
 
     userEvent.click(button);
 
-    const aboutModal = await waitFor(() => screen.getByTestId("about panel"));
+    const aboutModal = await waitFor(() => screen.getByTestId("about-panel"));
     expect(aboutModal).toBeInTheDocument();
   });
 
   test("should open Changelog modal when button is clicked", async () => {
-    const button = await waitFor(() => screen.getByTestId("changelog button"));
+    const button = await waitFor(() => screen.getByTestId("changelog-button"));
 
     expect(button).toBeInTheDocument();
 
     userEvent.click(button);
 
     const changelogModal = await waitFor(() =>
-      screen.getByTestId("changelog panel")
+      screen.getByTestId("changelog-panel")
     );
     expect(changelogModal).toBeInTheDocument();
   });

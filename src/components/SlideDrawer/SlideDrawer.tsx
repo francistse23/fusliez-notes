@@ -46,6 +46,7 @@ export default function SlideDrawer(
         })}
       />
       <div
+        data-testid="slide-drawer"
         className={cx(classes.SlideDrawer, {
           [classes.isDrawerOpen]: isDrawerOpen,
         })}

@@ -11,7 +11,7 @@ export default function ChangelogPanel(): JSX.Element {
   const classes = useStyles({ isMobile });
 
   return (
-    <div data-testid="changelog panel" className={classes.ChangelogPanel}>
+    <div data-testid="changelog-panel" className={classes.ChangelogPanel}>
       {isMobile && (
         <h2
           className={classes.ChangelogPanelTitle}

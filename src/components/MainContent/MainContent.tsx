@@ -11,7 +11,7 @@ export default function MainContent(): JSX.Element {
   const classes = useStyles({ isMobile });
 
   return (
-    <div id="main" className={classes.MainContent}>
+    <div id="main" className={classes.MainContent} data-testid="main-content">
       {!isMobile && <ScoresPanel />}
       <PlayersPanel />
     </div>

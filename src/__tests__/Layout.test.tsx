@@ -75,8 +75,6 @@ describe("Layout component tests", () => {
 
     act(() => fireResize(300));
     expect(testStore.getState().Device.isMobile).toBeTruthy();
-
-    // Device: { isMobile: true, orientation: 'landscape' },
   });
 
   test("Check if orientation changed", async () => {
