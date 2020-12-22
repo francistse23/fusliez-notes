@@ -1,16 +1,12 @@
 import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
-import { JssProvider, ThemeProvider } from "react-jss";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { DEFAULT_THEME_DATA } from "constants/theme";
-import { I18nextProvider } from "react-i18next";
+import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import Navbar from "components/Navbar";
-import { Provider } from "react-redux";
 import React from "react";
-import i18n from "../i18n";
-import jssSetUp from "utils/jssSetUp";
+import registerFaIcons from "../utils/registerFaIcons";
 import store from "store";
 
 describe("Navbar component tests", () => {
@@ -19,26 +15,20 @@ describe("Navbar component tests", () => {
   beforeEach(async () => {
     testStore = store;
 
+    registerFaIcons();
+
     const onChangeActiveViewMockFn = jest.fn();
     const setIsDrawerOpenMockFn = jest.fn();
 
     await render(
-      <React.Suspense fallback="loading...">
-        <I18nextProvider i18n={i18n}>
-          <JssProvider registry={jssSetUp()}>
-            <ThemeProvider theme={DEFAULT_THEME_DATA}>
-              <Provider store={testStore}>
-                <Navbar
-                  activeView=""
-                  onChangeActiveView={onChangeActiveViewMockFn}
-                  setIsDrawerOpen={setIsDrawerOpenMockFn}
-                  orientation="landscape"
-                />
-              </Provider>
-            </ThemeProvider>
-          </JssProvider>
-        </I18nextProvider>
-      </React.Suspense>
+      <DefaultComponentWrapper testStore={testStore}>
+        <Navbar
+          activeView=""
+          onChangeActiveView={onChangeActiveViewMockFn}
+          setIsDrawerOpen={setIsDrawerOpenMockFn}
+          orientation="landscape"
+        />
+      </DefaultComponentWrapper>
     );
   });
 

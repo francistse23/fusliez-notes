@@ -1,15 +1,10 @@
 import "regenerator-runtime/runtime";
 
-import { JssProvider, ThemeProvider } from "react-jss";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 
-import { DEFAULT_THEME_DATA } from "constants/theme";
-import { I18nextProvider } from "react-i18next";
+import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import Layout from "components/Layout";
-import { Provider } from "react-redux";
 import React from "react";
-import i18n from "../i18n";
-import jssSetUp from "utils/jssSetUp";
 import registerFaIcons from "../utils/registerFaIcons";
 import { setIsMobile } from "store/slices/DeviceSlice";
 import store from "store";
@@ -23,17 +18,9 @@ describe("Layout component tests", () => {
     registerFaIcons();
 
     await render(
-      <React.Suspense fallback="loading...">
-        <I18nextProvider i18n={i18n}>
-          <JssProvider registry={jssSetUp()}>
-            <ThemeProvider theme={DEFAULT_THEME_DATA}>
-              <Provider store={testStore}>
-                <Layout />
-              </Provider>
-            </ThemeProvider>
-          </JssProvider>
-        </I18nextProvider>
-      </React.Suspense>
+      <DefaultComponentWrapper testStore={testStore}>
+        <Layout />
+      </DefaultComponentWrapper>
     );
   });
 

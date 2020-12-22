@@ -5,6 +5,7 @@ import { JssProvider, ThemeProvider } from "react-jss";
 import { fireEvent, render, screen } from "@testing-library/react";
 
 import { DEFAULT_THEME_DATA } from "constants/theme";
+import DefaultComponentWrapper from "./DefaultComponentWrapper";
 import { I18nextProvider } from "react-i18next";
 import MapsPanel from "components/MapsPanel";
 import { Provider } from "react-redux";
@@ -21,17 +22,9 @@ describe("MapsPanel component tests", () => {
     testStore = store;
 
     await render(
-      <React.Suspense fallback="loading...">
-        <I18nextProvider i18n={i18n}>
-          <JssProvider registry={jssSetUp()}>
-            <ThemeProvider theme={DEFAULT_THEME_DATA}>
-              <Provider store={testStore}>
-                <MapsPanel />
-              </Provider>
-            </ThemeProvider>
-          </JssProvider>
-        </I18nextProvider>
-      </React.Suspense>
+      <DefaultComponentWrapper testStore={testStore}>
+        <MapsPanel />
+      </DefaultComponentWrapper>
     );
   });
 
