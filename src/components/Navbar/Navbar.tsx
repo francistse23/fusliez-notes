@@ -71,7 +71,7 @@ export default function Navbar(props: INavbar): JSX.Element {
   }
 
   return (
-    <div className={classes.Navbar}>
+    <div className={classes.Navbar} data-testid="navbar">
       <div className={classes.NavbarContainer}>
         {tabs.map(({ name, icon }) => (
           <NavbarItem key={name} name={name} icon={icon as IconProp} />
