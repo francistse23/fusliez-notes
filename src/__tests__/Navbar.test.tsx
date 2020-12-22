@@ -13,7 +13,7 @@ import i18n from "../i18n";
 import jssSetUp from "utils/jssSetUp";
 import store from "store";
 
-describe("MapsPanel component tests", () => {
+describe("Navbar component tests", () => {
   let testStore: typeof store;
 
   beforeEach(async () => {
