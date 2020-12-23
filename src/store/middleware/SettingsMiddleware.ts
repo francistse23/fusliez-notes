@@ -22,6 +22,8 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
   let isColorBlind = getIsColorBlind(state);
   let edit = true;
 
+  console.log(DEFAULT_SETTINGS);
+
   switch (action.type) {
     case setShowNames.type:
       showNames = action.payload;
@@ -35,7 +37,6 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
 
     case setIsColorBlind.type:
       isColorBlind = action.payload;
-
       break;
 
     case toggleIsColorBlind.type:
@@ -58,7 +59,6 @@ export const SettingsMiddleware: Middleware<unknown, RootState> = (store) => (
       `${NAMESPACE}settings`,
       JSON.stringify({
         showNames,
-
         isColorBlind,
       })
     );

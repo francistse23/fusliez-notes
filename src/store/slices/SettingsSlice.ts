@@ -23,7 +23,7 @@ function getInitialSate(): ISettings {
 }
 
 const SettingsSlice = createSlice({
-  name: "Scores",
+  name: "Settings",
   initialState: getInitialSate(),
   reducers: {
     setShowNames: (state: ISettings, action: PayloadAction<boolean>) => ({
