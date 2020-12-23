@@ -1,17 +1,11 @@
 import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
-import { JssProvider, ThemeProvider } from "react-jss";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import { DEFAULT_THEME_DATA } from "constants/theme";
 import DefaultComponentWrapper from "./DefaultComponentWrapper";
-import { I18nextProvider } from "react-i18next";
 import MapsPanel from "components/MapsPanel";
-import { Provider } from "react-redux";
 import React from "react";
-import i18n from "../i18n";
-import jssSetUp from "utils/jssSetUp";
 import { setCurrentMap } from "store/slices/MapsSlice";
 import store from "store";
 

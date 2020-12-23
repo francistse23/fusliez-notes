@@ -91,7 +91,10 @@ export const ScoresMiddleware: Middleware<unknown, RootState> = (store) => (
       break;
 
     case setImpostorLosses.type:
-      impostorLosses = action.paylaod;
+      // for some reason using action.payload makes
+      // impostorLosses undefined in test
+      const { payload } = action;
+      impostorLosses = payload;
 
       break;
 
@@ -104,7 +107,7 @@ export const ScoresMiddleware: Middleware<unknown, RootState> = (store) => (
       impostorLosses--;
 
       if (impostorLosses < 0) {
-        impostorLosses - 0;
+        impostorLosses = 0;
       }
 
       break;

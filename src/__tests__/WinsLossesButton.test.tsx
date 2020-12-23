@@ -1,8 +1,6 @@
 import "regenerator-runtime/runtime";
 import "@testing-library/jest-dom/extend-expect";
 
-import { render, screen } from "@testing-library/react";
-
 import { DEFAULT_THEME_DATA } from "constants/theme";
 import React from "react";
 import WinsLossesButton from "../components/ScoreControls/WinsLossesButton";
@@ -35,8 +33,5 @@ function renderComponent({ role, score }: { role: string; score: number }) {
 describe("Should render a set of buttons, which includes -, {score}, and +", () => {
   test("should renderwins/losses button control for crewmate", () => {
     renderComponent({ role: "crewmate", score: 2 });
-
-    // assert initial state
-    // screen.debug();
   });
 });
