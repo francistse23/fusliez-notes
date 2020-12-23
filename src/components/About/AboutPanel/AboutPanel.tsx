@@ -25,7 +25,11 @@ export default function AboutPanel(): JSX.Element {
   ];
 
   return (
-    <div style={{ direction: i18n.dir() }} className={classes.AboutPanel}>
+    <div
+      style={{ direction: i18n.dir() }}
+      className={classes.AboutPanel}
+      data-testid="about-panel"
+    >
       {isMobile && (
         <h2 className={classes.AboutPanelHeader}>{t("menu.about")}</h2>
       )}

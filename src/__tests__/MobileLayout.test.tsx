@@ -33,8 +33,6 @@ describe("MobileLayout component tests", () => {
       "mobile-navbar-menu.notes-button"
     );
 
-    // screen.debug();
-
     expect(notesNavbarButton).toBeInTheDocument();
   });
 });

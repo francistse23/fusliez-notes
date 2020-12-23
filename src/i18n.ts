@@ -22,6 +22,7 @@ i18n
 
     react: {
       useSuspense: (global as any).__DEV__ ? false : true,
+      wait: true,
     },
   });
 
