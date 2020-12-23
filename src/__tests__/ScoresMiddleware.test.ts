@@ -8,6 +8,7 @@ import store from "store";
 describe("ScoresMiddleware component tests", () => {
   const testStore = store;
   const KEY = `${NAMESPACE}scores`;
+  const next = jest.fn((action) => action);
 
   beforeEach(() => {
     // values stored in tests will also be available in other tests unless you run
@@ -27,7 +28,7 @@ describe("ScoresMiddleware component tests", () => {
         type: "Scores/incrementCrewmateWins",
         payload: undefined,
       };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -44,7 +45,7 @@ describe("ScoresMiddleware component tests", () => {
         type: "Scores/decrementCrewmateWins",
         payload: undefined,
       };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -64,7 +65,7 @@ describe("ScoresMiddleware component tests", () => {
 
       testStore.getState().Scores.crewmateWins = 0;
 
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -78,7 +79,7 @@ describe("ScoresMiddleware component tests", () => {
 
     test("should set crewmateWins to designated number in local storage", async () => {
       const action = { type: "Scores/setCrewmateWins", payload: 11 };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -98,7 +99,7 @@ describe("ScoresMiddleware component tests", () => {
         payload: undefined,
       };
 
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -115,7 +116,7 @@ describe("ScoresMiddleware component tests", () => {
         type: "Scores/decrementCrewmateLosses",
         payload: undefined,
       };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       const KEY = `${NAMESPACE}scores`;
 
@@ -137,7 +138,7 @@ describe("ScoresMiddleware component tests", () => {
 
       testStore.getState().Scores.crewmateLosses = 0;
 
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -152,7 +153,7 @@ describe("ScoresMiddleware component tests", () => {
     test("should set crewmateLosses to designated number in local storage", async () => {
       const action = { type: "Scores/setCrewmateLosses", payload: 50 };
 
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -171,7 +172,7 @@ describe("ScoresMiddleware component tests", () => {
         type: "Scores/incrementImpostorWins",
         payload: undefined,
       };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -188,7 +189,7 @@ describe("ScoresMiddleware component tests", () => {
         type: "Scores/decrementImpostorWins",
         payload: undefined,
       };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -208,7 +209,7 @@ describe("ScoresMiddleware component tests", () => {
 
       testStore.getState().Scores.impostorWins = 0;
 
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -222,7 +223,7 @@ describe("ScoresMiddleware component tests", () => {
 
     test("should set impostorWins to designated number in local storage", async () => {
       const action = { type: "Scores/setImpostorWins", payload: 99 };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -241,7 +242,7 @@ describe("ScoresMiddleware component tests", () => {
         type: "Scores/incrementImpostorLosses",
         payload: undefined,
       };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -258,7 +259,7 @@ describe("ScoresMiddleware component tests", () => {
         type: "Scores/decrementImpostorLosses",
         payload: undefined,
       };
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -278,7 +279,7 @@ describe("ScoresMiddleware component tests", () => {
 
       testStore.getState().Scores.impostorLosses = 0;
 
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
@@ -293,7 +294,7 @@ describe("ScoresMiddleware component tests", () => {
     test("should set impostorLosses to designated number in local storage", async () => {
       const action = { type: "Scores/setImpostorLosses", payload: 10 };
 
-      await ScoresMiddleware(testStore)(() => ({}))(action);
+      await ScoresMiddleware(testStore)(next)(action);
 
       expect(localStorage.__STORE__[KEY]).toBe(
         JSON.stringify({
