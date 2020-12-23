@@ -26,7 +26,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should increment crewmateWins by 1 in local storage", async () => {
       const action = {
         type: "Scores/incrementCrewmateWins",
-        payload: undefined,
       };
       await ScoresMiddleware(testStore)(next)(action);
 
@@ -43,7 +42,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should decrement crewmateWins by 1 in local storage", async () => {
       const action = {
         type: "Scores/decrementCrewmateWins",
-        payload: undefined,
       };
       await ScoresMiddleware(testStore)(next)(action);
 
@@ -60,7 +58,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should not decrement crewmateWins past 0 if crewmateWins = 0 in local storage", async () => {
       const action = {
         type: "Scores/decrementCrewmateWins",
-        payload: undefined,
       };
 
       testStore.getState().Scores.crewmateWins = 0;
@@ -96,7 +93,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should increment crewmateLosses by 1 in local storage", async () => {
       const action = {
         type: "Scores/incrementCrewmateLosses",
-        payload: undefined,
       };
 
       await ScoresMiddleware(testStore)(next)(action);
@@ -114,7 +110,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should decrement crewmateLosses by 1 in local storage", async () => {
       const action = {
         type: "Scores/decrementCrewmateLosses",
-        payload: undefined,
       };
       await ScoresMiddleware(testStore)(next)(action);
 
@@ -133,7 +128,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should not decrement crewmateLosses past 0 if crewmateLosses = 0 in local storage", async () => {
       const action = {
         type: "Scores/decrementCrewmateLosses",
-        payload: undefined,
       };
 
       testStore.getState().Scores.crewmateLosses = 0;
@@ -170,7 +164,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should increment impostorWins by 1 in local storage", async () => {
       const action = {
         type: "Scores/incrementImpostorWins",
-        payload: undefined,
       };
       await ScoresMiddleware(testStore)(next)(action);
 
@@ -187,7 +180,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should decrement impostorWins by 1 in local storage", async () => {
       const action = {
         type: "Scores/decrementImpostorWins",
-        payload: undefined,
       };
       await ScoresMiddleware(testStore)(next)(action);
 
@@ -204,7 +196,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should not decrement impostorWins past 0 if impostorWins = 0 in local storage", async () => {
       const action = {
         type: "Scores/decrementImpostorWins",
-        payload: undefined,
       };
 
       testStore.getState().Scores.impostorWins = 0;
@@ -240,7 +231,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should increment impostorLosses by 1 in local storage", async () => {
       const action = {
         type: "Scores/incrementImpostorLosses",
-        payload: undefined,
       };
       await ScoresMiddleware(testStore)(next)(action);
 
@@ -257,7 +247,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should decrement impostorLosses by 1 in local storage", async () => {
       const action = {
         type: "Scores/decrementImpostorLosses",
-        payload: undefined,
       };
       await ScoresMiddleware(testStore)(next)(action);
 
@@ -274,7 +263,6 @@ describe("ScoresMiddleware component tests", () => {
     test("should not decrement impostorLosses past 0 if impostorLosses = 0 in local storage", async () => {
       const action = {
         type: "Scores/decrementImpostorLosses",
-        payload: undefined,
       };
 
       testStore.getState().Scores.impostorLosses = 0;
@@ -305,5 +293,22 @@ describe("ScoresMiddleware component tests", () => {
         })
       );
     });
+  });
+
+  test("should reset scores to default", async () => {
+    const action = {
+      type: "Scores/resetScores",
+    };
+
+    await ScoresMiddleware(testStore)(next)(action);
+
+    expect(localStorage.__STORE__[KEY]).toBe(
+      JSON.stringify({
+        crewmateWins: 0,
+        crewmateLosses: 0,
+        impostorWins: 0,
+        impostorLosses: 0,
+      })
+    );
   });
 });
