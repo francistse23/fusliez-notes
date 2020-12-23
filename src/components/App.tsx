@@ -5,18 +5,20 @@ import Layout from "./Layout";
 import { Provider } from "react-redux";
 import React from "react";
 import jssSetUp from "utils/jssSetUp";
-import registerFaIcons from "../utils/registerFaIcons";
+import registerFaIcons from "utils/registerFaIcons";
 import store from "store";
 
-registerFaIcons();
-
 export default function App(): JSX.Element {
+  registerFaIcons();
+
   return (
     <>
       <Provider store={store}>
         <JssProvider registry={jssSetUp()}>
           <ThemeProvider theme={DEFAULT_THEME_DATA}>
-            <Layout />
+            <React.Suspense fallback="Loading...">
+              <Layout />
+            </React.Suspense>
           </ThemeProvider>
         </JssProvider>
       </Provider>

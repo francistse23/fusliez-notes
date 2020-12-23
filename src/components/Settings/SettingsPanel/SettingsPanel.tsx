@@ -78,6 +78,22 @@ export default function SettingsPanel(): JSX.Element {
       id: "fr-FR",
       label: "French (FR)",
     },
+    {
+      id: "cs-CZ",
+      label: "Czech (CZ)",
+    },
+    {
+      id: "he-IL",
+      label: "Hebrew (IL)",
+    },
+    {
+      id: "mg-MG",
+      label: "Malagasy (MG)",
+    },
+    {
+      id: "ja-JA",
+      label: "Japanese (JA)",
+    },
   ];
 
   return (
